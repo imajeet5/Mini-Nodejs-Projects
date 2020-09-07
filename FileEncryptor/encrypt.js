@@ -37,13 +37,3 @@ function encryptFile({ file, password }) {
  * It’s deterministic. That is, the hash function will always produce the same hash for the same plaintext.
  */
 
-// Not working
-function encryptString(text, password) {
-  const initVect = crypto.randomBytes(16);
-  const key = getCipherKey(password);
-
-  const cipher = crypto.createCipheriv("aes256", key, initVect);
-  const cipherText = cipher.update(text);
-
-  return initVect + cipherText;
-}
