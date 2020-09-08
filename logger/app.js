@@ -12,3 +12,5 @@ if (process.env.NODE_ENV === "production") {
 }
 
 console.log("Hi there xdfdfsdfsd sdfsd ");
+
+// NODE_ENV=production node app.js
