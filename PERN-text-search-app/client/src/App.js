@@ -18,18 +18,18 @@ function App() {
     }
   };
 
-  const handleInputChange = async (e) => {
-    setName(e.target.value);
-    try {
-      const response = await fetch(`http://localhost:9000/users/?name=${name}`);
+  // const handleInputChange = async (e) => {
+  //   setName(e.target.value);
+  //   try {
+  //     const response = await fetch(`http://localhost:9000/users/?name=${name}`);
 
-      const parseResponse = await response.json();
+  //     const parseResponse = await response.json();
 
-      setUsers(parseResponse);
-    } catch (err) {
-      console.error(err.message);
-    }
-  };
+  //     setUsers(parseResponse);
+  //   } catch (err) {
+  //     console.error(err.message);
+  //   }
+  // };
   return (
     <Fragment>
       <div className="container text-center">
@@ -41,7 +41,7 @@ function App() {
             placeholder="Enter user ..."
             className="form-control"
             value={name}
-            onChange={handleInputChange}
+            onChange={(e) => setName(e.target.value)}
           />
           <button className="btn btn-success">Submit</button>
         </form>

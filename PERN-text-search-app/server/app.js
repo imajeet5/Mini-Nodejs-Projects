@@ -24,12 +24,14 @@ app.get("/users", async (req, res) => {
     //"ajeet => %ly%
     // || => OR SQL || => Concat
 
-    const users = await pool.query("SELECT * FROM get_users($1)", [name]);
+    const users = await pool.query(`SELECT * FROM get_users($1)`, [name]);
+    // const users = await pool.query(`SELECT * FROM get_users('${name}')`);
 
     //Below code is vulnerable to SQL injection)
+    // barron';DROP TABLE drop_me; --
 
     // const users = await pool.query(
-    //   `SELECT * FROM users WHERE first_name || ' ' || last_name ILIKE '% ${name}%'`
+    //   `SELECT * FROM users WHERE first_name || ' ' || last_name ILIKE '%${name}%'`
     // );
 
     //
