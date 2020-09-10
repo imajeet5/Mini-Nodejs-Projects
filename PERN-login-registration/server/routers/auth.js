@@ -16,7 +16,7 @@ router.post("/register", validInfo, async (req, res) => {
     const user = await pool.query("SELECT * FROM get_user($1)", [email]);
 
     if (user.rows.length !== 0) {
-      return res.status(401).send("User already exists");
+      return res.status(401).json("User already exists");
     }
 
     const salt = await bcrypt.genSalt(10);

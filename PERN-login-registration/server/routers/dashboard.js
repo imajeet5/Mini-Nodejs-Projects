@@ -7,7 +7,7 @@ router.post("/", verify_jwt, async (req, res) => {
       console.log(req.user);
     const user = await pool.query("SELECT * FROM get_user(u_id:= $1)", [req.user]);
 
-    res.json(user.rows[0]);
+    res.json({user:user.rows[0].user_name});
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server error");
